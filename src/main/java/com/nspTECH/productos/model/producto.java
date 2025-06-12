@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,18 +24,26 @@ public class producto {
     @Column(name = "ID_PRODUCTO")
     private Long id;
 
-    @Column(name = "NOMBRE",nullable= false , length = 100)
+    @Column(name = "NOMBRE",nullable= false , length = 30)
     private String NOMBRE;
+    
+    @Column(name = "descripcion",nullable= true , length = 255)
+    private String descripcion;
+    
+    @Column(name = "marca",nullable= true , length = 50)
+    private String marca;
 
     @Column(name = "CANTIDAD",nullable= false , precision = 10)
     private Long CANTIDAD;
 
-    @Column(name = "PRECIO",nullable= false , precision = 10, scale=2)
+    @Column(name = "PRECIO",nullable= false , precision = 10)
     private Long PRECIO;
 
-    @Column(name = "SKU",nullable= false , precision = 20)
+    @Column(name = "SKU",nullable= false , precision = 12)
     private String SKU;
 
+    @Column(name = "estado",nullable= false)
+    private Boolean estado;
     
 
 }

@@ -78,6 +78,9 @@ public class ProductoController {
             productoActualizado.setNOMBRE(productoActualizar.getNOMBRE());
             productoActualizado.setPRECIO(productoActualizar.getPRECIO());
             productoActualizado.setSKU(productoActualizar.getSKU());
+            productoActualizado.setDescripcion(productoActualizar.getDescripcion());
+            productoActualizado.setMarca(productoActualizar.getMarca());
+            productoActualizado.setEstado(productoActualizar.getEstado());
             productoService.GuardarProducto(productoActualizado);
             return ResponseEntity.ok(productoActualizado);
         } catch (Exception e) {
