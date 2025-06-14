@@ -37,11 +37,11 @@ public class ProductoController {
             return ResponseEntity.ok(productos);
         }
     }
-    @GetMapping("/{ID_PRODUCTO}")
-    public ResponseEntity<?> BuscarProducto(@PathVariable Long ID_PRODUCTO){
+    @GetMapping("/{id}")
+    public ResponseEntity<?> BuscarProducto(@PathVariable Long id){
 
         try {
-            producto productoBuscado = productoService.BuscarUnProducto(ID_PRODUCTO);
+            producto productoBuscado = productoService.BuscarUnProducto(id);
             return ResponseEntity.ok(productoBuscado);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encuentran Producto");
@@ -51,12 +51,12 @@ public class ProductoController {
 
     @PostMapping
     public ResponseEntity<?> GuardarProducto(@RequestBody producto productoGuardar){
-       try {
+    try {
             producto productoRegistrar = productoService.GuardarProducto(productoGuardar);
             return ResponseEntity.ok(productoRegistrar);
-       } catch (Exception e) {
-         return ResponseEntity.status(HttpStatus.CONFLICT).body("No se puede registrar el Producto");
-       }
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("No se puede registrar el Producto");
+    }
     }
     
     @DeleteMapping("/{ID_PRODUCTO}")

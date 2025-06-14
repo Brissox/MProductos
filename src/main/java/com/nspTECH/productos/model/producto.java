@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="PRODUCTO")
+@Table(name="PRODUCTOS")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,11 +39,11 @@ public class producto {
     @Column(name = "PRECIO",nullable= false , precision = 10)
     private Long PRECIO;
 
-    @Column(name = "SKU",nullable= false , precision = 12)
+    @Column(name = "SKU",nullable= false , length = 12)
     private String SKU;
 
     @Column(name = "estado",nullable= false)
-    private Boolean estado;
+    private char estado;
     
 
 }
