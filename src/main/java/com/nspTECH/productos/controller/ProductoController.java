@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,17 +57,6 @@ public class ProductoController {
         return ResponseEntity.status(HttpStatus.CONFLICT).body("No se puede registrar el Producto");
     }
     }
-    
-    @DeleteMapping("/{ID_PRODUCTO}")
-        public ResponseEntity<String> EliminarProducto(@PathVariable Long ID_PRODUCTO){
-            try {
-                producto productoBuscado = productoService.BuscarUnProducto(ID_PRODUCTO);
-                productoService.EliminarProducto(ID_PRODUCTO);
-                return ResponseEntity.status(HttpStatus.OK).body("Se elimina producto");
-            } catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Producto no esta registrado");
-            }
-        }
     @PutMapping("/{ID_PRODUCTO}") //SOLO PERMITE ACTUALIZAR ESCRIBIENDO TODOS LOS DATOS
         
     public ResponseEntity<?> ActualizarProducto(@PathVariable Long ID_PRODUCTO, @RequestBody producto productoActualizar){
@@ -89,5 +77,16 @@ public class ProductoController {
     }
     
 
-
+/*
+        @DeleteMapping("/{ID_PRODUCTO}")
+        public ResponseEntity<String> EliminarProducto(@PathVariable Long ID_PRODUCTO){
+            try {
+                producto productoBuscado = productoService.BuscarUnProducto(ID_PRODUCTO);
+                productoService.EliminarProducto(ID_PRODUCTO);
+                return ResponseEntity.status(HttpStatus.OK).body("Se elimina producto");
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Producto no esta registrado");
+            }
+        }
+            */
 }
