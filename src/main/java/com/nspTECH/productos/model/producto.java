@@ -16,19 +16,19 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Schema(description="Todos los productos registrados en la empresa")
 
 public class producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_PRODUCTO")
-    @Schema(description ="aa")
-    private Long ID_PRODUCTO;
+    @Schema(description = "1")
+    private Long id_producto;
 
     @Column(name = "NOMBRE",nullable= false , length = 30)
-    @Schema(description ="aa")
-    private String NOMBRE;
+    @Schema(description ="aa",example= "juan perez")
+    private String nombre;
     
     @Column(name = "descripcion",nullable= true , length = 255)
     @Schema(description ="aa")
@@ -40,11 +40,11 @@ public class producto {
 
     @Column(name = "PRECIO",nullable= false , precision = 10)
     @Schema(description ="aa")
-    private Long PRECIO;
+    private Long precio;
 
     @Column(name = "SKU",nullable= false , length = 12)
     @Schema(description ="aa")
-    private String SKU;
+    private String sku;
 
     @Column(name = "estado",nullable= false)
     @Schema(description ="aa")

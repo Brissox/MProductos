@@ -87,7 +87,7 @@ public class ProductoController {
 
 // ENDPOINT PARA REGISTRAR UN PRODUCTO
     @PostMapping
-    @Operation(summary = "ENDPOINT QUE REGISTRA UN PRODUCTO", description = "ENDPOINT QUE REGISTRA UN PRODUCTO",requestBody= @io.swagger.v3.oas.annotations.parameters.RequestBody(description="PRODUCTO QUE SE VA A REGISTRAR", required = true), Content = @Content(schema = @Schema(implementation = producto.class)))
+    @Operation(summary = "ENDPOINT QUE REGISTRA UN PRODUCTO", description = "ENDPOINT QUE REGISTRA UN PRODUCTO",requestBody= @io.swagger.v3.oas.annotations.parameters.RequestBody(description="PRODUCTO QUE SE VA A REGISTRAR", required = true, content = @Content(schema = @Schema(implementation = producto.class))))
     @ApiResponses (value = {
         @ApiResponse(responseCode = "200", description = "Se registro correctamente el producto", content = @Content(mediaType = "application/json", schema = @Schema(implementation = producto.class))),
         @ApiResponse(responseCode = "500", description = "Indica que no se logro registrar el producto", content = @Content(mediaType = "application/json", schema = @Schema(type = "string", example = "No se puede registrar el producto")))
@@ -107,7 +107,7 @@ public class ProductoController {
 // ENDPOINT PARA EDITAR UN PRODUCTO
     @PutMapping("/{ID_PRODUCTO}") //SOLO PERMITE ACTUALIZAR ESCRIBIENDO TODOS LOS DATOS
         
-    @Operation(summary = "ENDPOINT QUE EDITA UN PRODUCTO", description = "ENDPOINT QUE EDITA UN PRODUCTO", requestBody=@io.swagger.v3.oas.annotations.parameters.RequestBody(description="PRODUCTO QUE SE VA A REGISTRAR", required = true), Content = @Content(schema = @Schema(implementation = producto.class)))
+    @Operation(summary = "ENDPOINT QUE EDITA UN PRODUCTO", description = "ENDPOINT QUE EDITA UN PRODUCTO", requestBody=@io.swagger.v3.oas.annotations.parameters.RequestBody(description="PRODUCTO QUE SE VA A REGISTRAR", required = true, content = @Content(schema = @Schema(implementation = producto.class))))
     @Parameters (value = {
         @Parameter (name="ID_PRODUCTO", description= "ID del producto que se editara", in = ParameterIn.PATH, required= true)})
 
@@ -121,9 +121,9 @@ public class ProductoController {
     public ResponseEntity<?> ActualizarProducto(@PathVariable Long ID_PRODUCTO, @RequestBody producto productoActualizar){
         try {
             producto productoActualizado = productoService.BuscarUnProducto(ID_PRODUCTO);
-            productoActualizado.setNOMBRE(productoActualizar.getNOMBRE());
-            productoActualizado.setPRECIO(productoActualizar.getPRECIO());
-            productoActualizado.setSKU(productoActualizar.getSKU());
+            productoActualizado.setNombre(productoActualizar.getNombre());
+            productoActualizado.setPrecio(productoActualizar.getPrecio());
+            productoActualizado.setSku(productoActualizar.getSku());
             productoActualizado.setDescripcion(productoActualizar.getDescripcion());
             productoActualizado.setMarca(productoActualizar.getMarca());
             productoActualizado.setEstado(productoActualizar.getEstado());
