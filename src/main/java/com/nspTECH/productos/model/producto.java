@@ -23,31 +23,31 @@ public class producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_PRODUCTO")
-    @Schema(description = "1")
+    @Schema(description = "identificador del producto", example="1")
     private Long id_producto;
 
     @Column(name = "NOMBRE",nullable= false , length = 30)
-    @Schema(description ="aa",example= "juan perez")
+    @Schema(description ="nombre del producto",example= "Monster")
     private String nombre;
     
     @Column(name = "descripcion",nullable= true , length = 255)
-    @Schema(description ="aa")
+    @Schema(description ="detalle del producto ", example=" bebidas energéticas, conocida por su logotipo de garras verdes y su lema Unleash the Beast")
     private String descripcion;
     
     @Column(name = "marca",nullable= true , length = 50)
-    @Schema(description ="aa")
+    @Schema(description ="nombre de la empresa que fabrica el producto", example="coca cola company")
     private String marca;
 
     @Column(name = "PRECIO",nullable= false , precision = 10)
-    @Schema(description ="aa")
+    @Schema(description ="valor del producto", example="1600")
     private Long precio;
 
     @Column(name = "SKU",nullable= false , length = 12)
-    @Schema(description ="aa")
+    @Schema(description ="codigo de identificador en el inventario", example="123123a")
     private String sku;
 
     @Column(name = "estado",nullable= false)
-    @Schema(description ="aa")
+    @Schema(description ="estado en el que se encuentra el producto",example="A=Activo / I=Inactivo")
     private char estado;
     
 
