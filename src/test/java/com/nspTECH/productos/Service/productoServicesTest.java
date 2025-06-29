@@ -1,24 +1,24 @@
 package com.nspTECH.productos.Service;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
-
 import java.util.ArrayList;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 
 import com.nspTECH.productos.model.producto;
 import com.nspTECH.productos.repository.productoRepository;
 import com.nspTECH.productos.services.productoService;
-
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
 
 public class productoServicesTest {
 
@@ -114,20 +114,41 @@ public class productoServicesTest {
 
     }
 
+    @Test
+    public void testEditarProducto(){
 
-/*
+        producto productoO = new producto();
+        productoO.setId_producto(11L);
+        productoO.setSku("12321aasd");
+        productoO.setDescripcion("Malo");
+
+        producto productoE = new producto();
+        productoE.setId_producto(11L);
+        productoE.setSku("3344asd");
+        productoE.setDescripcion("Bueno");
+
+        when(productorepository.save(any(producto.class))).thenReturn(productoE);
+        when(productorepository.existsById(11L)).thenReturn(true);
+        producto resultado = productoservices.GuardarProducto(productoE);
+
+        assertNotNull(resultado);
+        assertEquals(11L, resultado.getId_producto());
+        assertEquals("3344asd", resultado.getSku());
+        assertEquals("Bueno", resultado.getDescripcion());
+
+        verify(productorepository, times(1)).save(productoE);
+    }
 
     @Test
-    public void testEliminarEnvio(){
+    public void testEliminarProducto(){
         Long id = 11L;
-        doNothing().when(enviorepository).deleteById(id);
+        doNothing().when(productorepository).deleteById(id);
 
-        enviosservices.Eliminar***(id);
+        productoservices.EliminarProducto(11L);
 
-        verify(enviosrepository.times(1)).deleteById(id);
+        verify(productorepository, times(1)).deleteById(id);
 
     }
-*/
 }
 
 
